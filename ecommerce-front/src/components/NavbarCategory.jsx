@@ -1,38 +1,28 @@
 import Nav from 'react-bootstrap/Nav'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function NavbarCategory () {
+  const [categories, setCategories] = useState([])
+  useEffect(() => {
+    axios.get('http://127.0.0.1:3000/api/v1/categories')
+      .then((response) => {
+        setCategories(response.data)
+      })
+      .catch(console.error)
+  }, [])
   return (
     <Nav fill variant='tabs' defaultActiveKey='/home'>
-      <Nav.Item>
-        <Nav.Link eventKey='link-1'>Electrónica</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-2'>Moda y Accesorios</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-3'>Belleza y Cuidado Personal</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-4'>Hogar y Cocina</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-5'>Deportes</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-6'>Salud y Bienestar</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-7'>Automotriz</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-8'>Mascotas</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-9'>Alimentos y Bebidas</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey='link-10'>Libros y Papelería</Nav.Link>
-      </Nav.Item>
+      {
+        categories.map((category) => {
+          return (
+            <Nav.Item key={category._id}>
+              <Nav.Link eventKey='link-1'>{category.name}</Nav.Link>
+            </Nav.Item>
+          )
+        })
+      }
+
     </Nav>
   )
 }

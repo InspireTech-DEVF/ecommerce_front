@@ -14,7 +14,7 @@ function Header () {
       {['sm'].map((expand) => (
         <Navbar key={expand} expand={expand} className='bg-body-tertiary mb-3'>
           <Container fluid>
-            <Navbar.Brand href='#'>FullStack Fushion | ecommerece</Navbar.Brand>
+            <Navbar.Brand href='#'>FullStack Fushion | ecommerce</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
