@@ -1,8 +1,11 @@
 # React + Vite
+//FILTROS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Se puede filtrar por categoria con darle click a cualquiera, por ejemplo:
+-Electronica
+-Moda & Accesorios
+-Belleza y Cuidado Personal
+-Hogar de Cocina
+-Deportes, etc
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+De la misma manera se puede filtrar por medio del input, con forme vas escribiendo se va filtrado los productos que tenga coindidencia
