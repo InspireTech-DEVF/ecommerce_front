@@ -1,3 +1,13 @@
 .carrito:hover {
-    transform: scale(1.1); transition: all 0.5s;
+    transform: scale(1.1);
+    transition: all 0.5s;
 }
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
