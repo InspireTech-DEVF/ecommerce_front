@@ -1,9 +1,14 @@
+import { BrowserRouter } from "react-router-dom"
+import RoutesIndex from "./routes"
 
 function App() {
 
   return (
     <>
-     <h1>Hola mundo</h1>
+    <BrowserRouter>
+      <RoutesIndex />
+      <div>Hola mundo</div>
+    </BrowserRouter>
     </>
   )
 }
