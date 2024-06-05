@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import {useForm} from 'react-hook-form'
 import { registerUserServices } from "../services/userServices"
-
+import '../styles/form.css'
+import Logo from '../assets/icon.svg'
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -13,32 +14,56 @@ const Signup = () => {
       } = useForm()
 
       const onSubmit = async (data) =>{
-        try{
+          try{
             const response = await registerUserServices(data)
             if(response.status === 201 ){
                 navigate('/login')
             }
         }catch(error){
             console.log('error', error.message)
-        }
+        }  
+        console.log(data)
       }
 
   return (
     <main className='form-signin w-100 m-auto'>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <img className='mb-4' src={Logo} alt='' width='72' height='57' />
-      <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
+      <h1 className='h3 mb-3 fw-normal'>Registro</h1>
+
+      <div className='form-floating'>
+        <input
+          type='email'
+          className='form-control'
+          id='email'
+          name='email'
+          placeholder='name@example.com'
+          {...register('email', { required: true })}
+        />
+        <label htmlFor='email'>Correo electrónico</label>
+      </div>
+
+      <div className='form-floating'>
+        <input
+          type='password'
+          className='form-control'
+          id='password'
+          name='password'
+          placeholder='Password'
+          {...register('password', { required: true })}
+        />
+        <label htmlFor='password'>Contraseña</label>
+      </div>
 
       <div className='form-floating'>
         <input
           type='text'
           className='form-control'
-          id='first_name'
-          name='first_name'
+          id='name'
+          name='name'
           placeholder='John'
-          {...register('first_name', { required: true })}
+          {...register('name', { required: true })}
         />
-        <label htmlFor='first_name'>First Name</label>
+        <label htmlFor='name'>Nombre</label>
       </div>
 
       <div className='form-floating'>
@@ -51,48 +76,38 @@ const Signup = () => {
           {...register('last_name', { required: true })}
 
         />
-        <label htmlFor='last_name'>Last Name</label>
+        <label htmlFor='last_name'>Apellido</label>
       </div>
-
+{/* {
       <div className='form-floating'>
-        <select
-          className='form-select'
-          id='gender'
-          name='gender'
-          {...register('gender', { required: true })}
-        >
-          <option value=''>Choose...</option>
-          <option value='M'>Male</option>
-          <option value='F'>Female</option>
-        </select>
-        <label htmlFor='gender'>Gender</label>
-      </div>
+          <select
+            className='form-select'
+            id='role'
+            name='role'
+            {...register('role', { required: true })}
+          >
+            <option value=''>Choose...</option>
+            <option value='ADMIN'>Admin</option>
+            <option value='CUSTOMER'>Cliente</option>
+          </select>
+          <label htmlFor='role'>Rol</label>
+        </div> } */}
 
-      <div className='form-floating'>
+     {/*    <div className='form-floating'>
         <input
-          type='email'
+          type='text'
           className='form-control'
-          id='email'
-          name='email'
-          placeholder='name@example.com'
-          {...register('email', { required: true })}
-        />
-        <label htmlFor='email'>Email address</label>
-      </div>
+          id='isActive'
+          name='isActive'
+          placeholder='true'
+          {...register('isActive', { required: true })}
 
-      <div className='form-floating'>
-        <input
-          type='password'
-          className='form-control'
-          id='password'
-          name='password'
-          placeholder='Password'
-          {...register('password', { required: true })}
         />
-        <label htmlFor='password'>Password</label>
-      </div>
+        <label htmlFor='isActive'>Is active?</label>
+      </div> */}
 
-      <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign up</button>
+
+      <button className='w-100 btn btn-lg btn-primary' ty pe='submit'>Registro</button>
       <p className='mt-5 mb-3 text-muted'>© 2017–2022</p>
     </form>
   </main>
