@@ -19,17 +19,19 @@ El usuario en página se registra por default como CUSTOMER
 
 Mediante correo y contraseña, se redireciona a la página de perfil del usuario (/profile)
 
-    USUARIO ADMIN
-  {
-    "email": "czs@gmail.com",
-    "password": "nczs"
-}
+USUARIO ADMIN
 
-  USUARIO CUSTOMER 
-      {
-    "email": "nico@gmail.com",
-    "password": "yazawa"
-    }
+        {
+            "email": "czs@gmail.com",
+            "password": "nczs"
+        }
+
+USUARIO CUSTOMER 
+
+         {
+            "email": "nico@gmail.com",
+            "password": "yazawa"
+         }
 
 Para cerrar sesión, simplemente se hace click en el botón de cerrar sesión en la esquina superior derecha
 
