@@ -2,8 +2,10 @@ import { Nav, Container, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
 import "../Header/header.css";
 import NavbarCategory from "../Navbar/NavbarCategory";
 import SearchItem from "../SearchItem/SearchItem.jsx";
+import { useAuthContext } from "../../hooks/useAuth.jsx";
 
 function Header({ onCategorySelect }) {
+  const {logout} = useAuthContext()
   return (
     <>
       <Navbar bg="light" expand="lg" fixed="top">
@@ -40,14 +42,14 @@ function Header({ onCategorySelect }) {
                     id="navbarScrollingDropdown"
                     className="ms-auto"
                   >
-                    <NavDropdown.Item href="#login">
+                    <NavDropdown.Item href="/login">
                       Iniciar sesión
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#register">
+                    <NavDropdown.Item href="/signup">
                       Registrarte
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#logout">
+                    <NavDropdown.Item href="/" onClick={logout}>
                       Cerrar sesión
                     </NavDropdown.Item>
                   </NavDropdown>
