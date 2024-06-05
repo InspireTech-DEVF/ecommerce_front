@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import {useForm} from 'react-hook-form'
 import { registerUserServices } from "../services/userServices"
 import '../styles/form.css'
-
+import Logo from '../assets/icon.svg'
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -28,8 +28,7 @@ const Signup = () => {
   return (
     <main className='form-signin w-100 m-auto'>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <img className='mb-4' src= '' alt='' width='72' height='57' />
-      <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
+      <h1 className='h3 mb-3 fw-normal'>Registro</h1>
 
       <div className='form-floating'>
         <input
@@ -40,7 +39,7 @@ const Signup = () => {
           placeholder='name@example.com'
           {...register('email', { required: true })}
         />
-        <label htmlFor='email'>Email address</label>
+        <label htmlFor='email'>Correo electrónico</label>
       </div>
 
       <div className='form-floating'>
@@ -52,7 +51,7 @@ const Signup = () => {
           placeholder='Password'
           {...register('password', { required: true })}
         />
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Contraseña</label>
       </div>
 
       <div className='form-floating'>
@@ -64,7 +63,7 @@ const Signup = () => {
           placeholder='John'
           {...register('name', { required: true })}
         />
-        <label htmlFor='name'>First Name</label>
+        <label htmlFor='name'>Nombre</label>
       </div>
 
       <div className='form-floating'>
@@ -77,9 +76,9 @@ const Signup = () => {
           {...register('last_name', { required: true })}
 
         />
-        <label htmlFor='last_name'>Last Name</label>
+        <label htmlFor='last_name'>Apellido</label>
       </div>
-
+{/* {
       <div className='form-floating'>
           <select
             className='form-select'
@@ -89,12 +88,12 @@ const Signup = () => {
           >
             <option value=''>Choose...</option>
             <option value='ADMIN'>Admin</option>
-            <option value='CUSTOMER'>Customer</option>
+            <option value='CUSTOMER'>Cliente</option>
           </select>
-          <label htmlFor='role'>Role</label>
-        </div>
+          <label htmlFor='role'>Rol</label>
+        </div> } */}
 
-        <div className='form-floating'>
+     {/*    <div className='form-floating'>
         <input
           type='text'
           className='form-control'
@@ -105,10 +104,10 @@ const Signup = () => {
 
         />
         <label htmlFor='isActive'>Is active?</label>
-      </div>
+      </div> */}
 
 
-      <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign up</button>
+      <button className='w-100 btn btn-lg btn-primary' ty pe='submit'>Registro</button>
       <p className='mt-5 mb-3 text-muted'>© 2017–2022</p>
     </form>
   </main>
