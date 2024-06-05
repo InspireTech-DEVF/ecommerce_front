@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import Item from "./pages/Item.jsx";
 import ProductProvider from "./context/SearchContext.jsx";
+import RoutesIndex from "./routes/index.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -13,10 +15,14 @@ function App() {
   };
 
   return (
+    <AuthProvider>
+
     <ProductProvider>
       <Router>
+        
         <div>
           <Header onCategorySelect={handleCategorySelect} />
+          <RoutesIndex />
           <Routes>
             <Route path="/items/:category_id" element={<Item />} />
             <Route path="/" element={<Item />} />
@@ -24,6 +30,7 @@ function App() {
         </div>
       </Router>
     </ProductProvider>
+    </AuthProvider>
   );
 }
 

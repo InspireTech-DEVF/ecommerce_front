@@ -2,9 +2,11 @@ import { Nav, Container, Navbar, NavDropdown, Row, Col } from "react-bootstrap";
 import "../Header/header.css";
 import NavbarCategory from "../Navbar/NavbarCategory";
 import SearchItem from "../SearchItem/SearchItem.jsx";
+import { useAuthContext } from "../../hooks/useAuth.jsx";
 import CartWidget from "../CartWidget/CartWidget.jsx";
 
 function Header({ onCategorySelect }) {
+  const { logout, isAuth } = useAuthContext();
   return (
     <>
       <Navbar bg="light" expand="lg" fixed="top">
@@ -27,22 +29,25 @@ function Header({ onCategorySelect }) {
                   <Nav.Link href="#cart" className="me-2">
                     <CartWidget/>
                   </Nav.Link>
-                  <NavDropdown
-                    title="¿Tienes cuenta?"
-                    id="navbarScrollingDropdown"
-                    className="ms-auto"
-                  >
-                    <NavDropdown.Item href="#login">
-                      Iniciar sesión
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#register">
-                      Registrarte
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#logout">
+                  {!isAuth ? (
+                    <NavDropdown
+                      title="¿Tienes cuenta?"
+                      id="navbarScrollingDropdown"
+                      className="ms-auto"
+                    >
+                      <NavDropdown.Item href="/login">
+                        Iniciar sesión
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/signup">
+                        Registrarte
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                    </NavDropdown>
+                  ) : (
+                    <NavDropdown.Item href="/" onClick={logout}>
                       Cerrar sesión
                     </NavDropdown.Item>
-                  </NavDropdown>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Col>
