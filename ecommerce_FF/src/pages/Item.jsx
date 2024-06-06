@@ -1,14 +1,12 @@
-import { useContext , useEffect } from "react";
+import { useContext, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ProductContext } from "../context/SearchContext";
 import { Link } from "react-router-dom";
-
 const defaultImage =
   "https://romanamx.com/cdn/shop/products/head-shoulders-shampoo-limpieza-renovadora-375ml-romana-romana-la-tienda-de-cuidado-de-la-piel-maquillaje-y-tratamientos-para-el-cabello.jpg?v=1622588963&width=1080";
 
@@ -53,7 +51,7 @@ const Item = () => {
                   {product.description}
                 </Card.Text>
                 <Card.Text className="fw-bold">${product.price}</Card.Text>
-                <Link to={`/items/${product._id}`} variant="primary" className="mt-auto">
+                <Link to={`/items/${product._id}`} className="btn btn-secondary mt-2">
                   Ver detalle
                 </Link>
               </Card.Body>
