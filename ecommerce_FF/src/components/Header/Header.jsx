@@ -44,9 +44,15 @@ function Header({ onCategorySelect }) {
                       <NavDropdown.Divider />
                     </NavDropdown>
                   ) : (
+                    <NavDropdown>
+                    <NavDropdown.Item href="/profile">
+                      Mi perfil
+                    </NavDropdown.Item>
                     <NavDropdown.Item href="/" onClick={logout}>
                       Cerrar sesión
                     </NavDropdown.Item>
+                    </NavDropdown>
+                    
                   )}
                 </Nav>
               </Navbar.Collapse>
