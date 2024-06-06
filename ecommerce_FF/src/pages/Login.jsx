@@ -30,8 +30,8 @@ const Login = () => {
   return (
     <main className='form-signin w-100 m-auto'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1 className='h3 mb-3 fw-normal'>Please log in</h1>
-        <div className='form-floating'>
+        <h1 className='h3 mb-3 fw-normal pt-5 text-center text-bold'>Login</h1>
+        <div className='form-floating mt-5'>
           <input
             type='email'
             className='form-control'
@@ -43,7 +43,7 @@ const Login = () => {
         </div>
         {errors.email && <span className='text-name'>This field is required</span>}
 
-        <div className='form-floating'>
+        <div className='form-floating pb-5'>
           <input
             type='password'
             className='form-control'
@@ -58,7 +58,7 @@ const Login = () => {
         <button className='btn btn-primary w-100 py-2' type='submit'>
           Sign in
         </button>
-        <p className='mt-5 mb-3 text-body-secondary'>© 2017–2023</p>
+        <p className='mt-5 mb-3 text-body-secondary'>© FullStackFushion</p>
       </form>
     </main>
 

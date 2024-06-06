@@ -26,7 +26,7 @@ function Header({ onCategorySelect }) {
               <Navbar.Collapse id="navbarResponsive">
                 <Nav className="me-auto align-items-center w-100">
                   <SearchItem />
-                  <Nav.Link href="#cart" className="me-2">
+                  <Nav.Link href="/cart" className="me-2">
                     <CartWidget/>
                   </Nav.Link>
                   {!isAuth ? (
@@ -56,7 +56,7 @@ function Header({ onCategorySelect }) {
       </Navbar>
       <Navbar bg="light">
         <Container>
-          <NavbarCategory onCategorySelect={onCategorySelect} />
+          <NavbarCategory className="mt-5" onCategorySelect={onCategorySelect} />
         </Container>
       </Navbar>
     </>

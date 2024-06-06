@@ -3,6 +3,7 @@ import  Signup  from '../pages/Signup.jsx'
 import Login from '../pages/Login.jsx'
 import Profile from '../pages/Profile.jsx'
 import ItemDetail from '../pages/ItemDetail.jsx'
+import Cart from '../pages/Cart.jsx'
 
 const RoutesIndex = () => {
   return (
@@ -11,6 +12,7 @@ const RoutesIndex = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/items/:id' element={<ItemDetail />} />
+        <Route path='/cart' element={<Cart/>}/>
     </Routes>
   )
 }
