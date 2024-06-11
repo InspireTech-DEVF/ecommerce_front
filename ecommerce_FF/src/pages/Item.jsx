@@ -8,11 +8,14 @@ import Col from "react-bootstrap/Col";
 import { ProductContext } from "../context/SearchContext";
 import { Link } from "react-router-dom";
 const defaultImage =
-  "https://romanamx.com/cdn/shop/products/head-shoulders-shampoo-limpieza-renovadora-375ml-romana-romana-la-tienda-de-cuidado-de-la-piel-maquillaje-y-tratamientos-para-el-cabello.jpg?v=1622588963&width=1080";
+  "https://cosirkenyaorg.files.wordpress.com/2022/06/product-image-placeholder.jpeg";
 
 const Item = () => {
   const { category_id } = useParams();
   const { products, setProducts } = useContext(ProductContext); // Usar el contexto correctamente
+const handleImageError = (e) => {
+  e.target.src = defaultImage
+}
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -44,6 +47,7 @@ const Item = () => {
                 alt={product.name}
                 className="img-fluid"
                 style={{ height: "200px", objectFit: "contain" }}
+                onError={handleImageError}
               />
               <Card.Body className="d-flex flex-column">
                 <Card.Title>{product.name}</Card.Title>

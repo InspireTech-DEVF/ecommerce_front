@@ -18,7 +18,7 @@ const RoutesIndex = () => {
         <Route path='/cart' element={<Cart/>}/>
          <Route
         path='/secret'
-        element={isAuth ? <Secret /> : <Navigate to='/login' />}
+        element={isAuth ? <Secret /> : <Navigate to='/' />}
         /> 
     </Routes>
   )
