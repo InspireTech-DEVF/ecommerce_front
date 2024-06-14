@@ -6,6 +6,7 @@ import ItemDetail from '../pages/ItemDetail.jsx'
 import Cart from '../pages/Cart.jsx'
 import Secret from '../pages/Secret.jsx'
 import { useAuthContext } from '../hooks/useAuth.jsx'
+import Order from '../pages/Order.jsx'
 
 const RoutesIndex = () => {
   const {isAuth} = useAuthContext()
@@ -20,6 +21,7 @@ const RoutesIndex = () => {
         path='/secret'
         element={isAuth ? <Secret /> : <Navigate to='/' />}
         /> 
+        <Route path='/order' element={<Order/>}/>
     </Routes>
   )
 }

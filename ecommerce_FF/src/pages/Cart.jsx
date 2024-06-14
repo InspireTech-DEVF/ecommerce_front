@@ -8,11 +8,15 @@ import {
   MDBBtn,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import axios from 'axios';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, finalizePurchase } =
+    useContext(CartContext);
   const [total, setTotal] = useState(0);
+  const [hasOrders, setHasOrders] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const calculateTotal = () => {
@@ -30,11 +34,38 @@ const Cart = () => {
     await removeFromCart(itemId);
   };
 
-  const handleFinalizePurchase = async () => {
-    await clearCart(); // Limpiar el carrito en el backend y frontend
-    alert('Purchase finalized successfully!');
+  const handleFinalizePurchase = async (firstItemId) => {
+    try {
+      await finalizePurchase(firstItemId);
+    } catch (error) {
+      console.error('Error finalizing purchase:', error);
+    }
   };
-  
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const token = sessionStorage.getItem('token');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/cart/order`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        if (response.data.length > 0) {
+          setHasOrders(true);
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  const handleButtonClick = () => {
+    navigate('/order');
+  };
+
   return (
     <MDBContainer className="my-5">
       <h3 className="mb-4">Carrito de Compras</h3>
@@ -77,10 +108,19 @@ const Cart = () => {
       </MDBTable>
       <div className="d-flex justify-content-between mt-4">
         <h4>Total: ${total}</h4>
-        <MDBBtn color="warning" onClick={handleFinalizePurchase}>
-          Finalizar Compra
-        </MDBBtn>
+        {cartItems.length > 0 && (
+         <MDBBtn color="warning" onClick={() => handleFinalizePurchase(cartItems[0]._id)}>
+         Finalizar Compra
+       </MDBBtn>
+        )}
       </div>
+      <div>
+      {hasOrders && (
+        <MDBBtn color="yellow" onClick={handleButtonClick}>
+          Mis compras
+        </MDBBtn>
+      )}
+    </div>
       <div className="mt-4">
         <Link to="/" className="btn btn-secondary">
           Volver

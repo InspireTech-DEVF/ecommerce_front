@@ -20,6 +20,7 @@ const Login = () => {
         const response = await logInUserServices(data)
         if (response.status === 200) {
           login(response.data.token)
+          console.log(response.data)
           navigate('/profile')
         }
       } catch (error) {
