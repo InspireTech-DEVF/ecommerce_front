@@ -7,10 +7,12 @@ const CartWidget = () => {
 
   useEffect(() => {
     const fetchCartItems = async () => {
+      console.log(sessionStorage.getItem('token'));
       try {
+        const token = sessionStorage.getItem('token');
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${token}`
           }
         });
         setCartItems(response.data);
